@@ -12,3 +12,16 @@ export const productListReducer = (state = { products: [] }, action) => {
 			return state;
 	}
 };
+
+export const productDetailReducer = (state = { product: { reviews: [] } }, action) => {
+	switch (action.type) {
+		case constant.PRODUCT_DETAIL_REQUEST:
+			return { loading: true, ...state };
+		case constant.PRODUCT_DETAIL_SUCCESS:
+			return { loading: false, product: action.payload };
+		case constant.PRODUCT_DETAIL_FAIL:
+			return { loading: false, error: action.payload };
+		default:
+			return state;
+	}
+};
